@@ -6,20 +6,23 @@ import org.bson.types.ObjectId;
 public class Transaction {
 
     private ObjectId id;
+    private String username;  // dodano
     private String type;
     private double amount;
     private String description;
     private String category;
 
-    public Transaction(String type, double amount, String description,String category) {
+    public Transaction(String username, String type, double amount, String description,String category) {
+        this.username = username;
         this.type = type;
         this.amount = amount;
         this.description = description;
         this.category=category;
     }
 
-    public Transaction(ObjectId id, String type, double amount, String description, String category) {
+    public Transaction(ObjectId id, String username, String type, double amount, String description, String category) {
         this.id = id;
+        this.username = username;
         this.type = type;
         this.amount = amount;
         this.description = description;
@@ -27,7 +30,8 @@ public class Transaction {
     }
 
     public Document toDocument() {
-        Document d = new Document("type", type)
+        Document d = new Document("username", username)
+                .append("type", type)
                 .append("amount", amount)
                 .append("description", description)
                 .append("category", category);
@@ -39,6 +43,7 @@ public class Transaction {
     }
 
     public ObjectId getId() { return id; }
+    public String getUsername() { return username; }
     public String getType() { return type; }
     public double getAmount() { return amount; }
     public String getDescription() { return description; }

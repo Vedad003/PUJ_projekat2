@@ -3,32 +3,35 @@ package org.example.lifemanagment;
 import javafx.fxml.FXML;
 import financeapp.FinanceTrackerFormFrame;
 import org.example.lifemanagment.trackers.*;
+import org.example.lifemanagment.session.UserSession;
 
 public class MainMenuControler {
 
     @FXML
     protected void onFinanceButtonClick() {
-        // Swing prozor iz Projekta 1
-        javax.swing.SwingUtilities.invokeLater(() -> new FinanceTrackerFormFrame().setVisible(true));
+        String username = UserSession.getUser();
+        javax.swing.SwingUtilities.invokeLater(() ->
+                new FinanceTrackerFormFrame(username).setVisible(true)
+        );
     }
 
     @FXML
     protected void onHabitTrackerClick() {
-        HabitTracker.display("korisnik1");
+        HabitTracker.display(UserSession.getUser());
     }
 
     @FXML
     protected void onSleepTrackerClick() {
-        SleepTracker.display("korisnik1");
+        SleepTracker.display(UserSession.getUser());
     }
 
     @FXML
     protected void onStudyPlannerClick() {
-        StudyPlanner.display("korisnik1");
+        StudyPlanner.display(UserSession.getUser());
     }
 
     @FXML
     protected void onMoodTrackerClick() {
-        MoodTracker.display("korisnik1");
+        MoodTracker.display(UserSession.getUser());
     }
 }

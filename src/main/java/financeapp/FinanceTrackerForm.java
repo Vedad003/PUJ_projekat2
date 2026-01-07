@@ -27,10 +27,11 @@ public class FinanceTrackerForm {
     private TransactionManager manager;
 
     private Object selectedID = null;
+    private final String username;
 
-    public FinanceTrackerForm() {
-
-        manager = new TransactionManager();
+    public FinanceTrackerForm(String username) {
+        this.username = username;
+        manager = new TransactionManager(username);
         loadDataIntoTable();
         updateSummary();
 
@@ -54,7 +55,7 @@ public class FinanceTrackerForm {
                 return;
             }
 
-            Transaction t = new Transaction(type, amount, description, category);
+            Transaction t = new Transaction(username, type, amount, description, category);
             manager.addTransaction(t);
 
             loadDataIntoTable();
@@ -69,7 +70,6 @@ public class FinanceTrackerForm {
     }
 
     private void loadSelectedRow() {
-
         int row = transactionTable.getSelectedRow();
         if (row == -1) return;
 
@@ -95,6 +95,7 @@ public class FinanceTrackerForm {
 
             Transaction t = new Transaction(
                     (org.bson.types.ObjectId) selectedID,
+                    username,
                     (String) typeCombo.getSelectedItem(),
                     Double.parseDouble(amountField.getText()),
                     descriptionField.getText(),
@@ -112,7 +113,6 @@ public class FinanceTrackerForm {
     }
 
     private void deleteSelected() {
-
         int row = transactionTable.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(null, "Odaberite transakciju!");
@@ -135,7 +135,6 @@ public class FinanceTrackerForm {
     }
 
     private void exportData() {
-
         try {
             FileWriter fw = new FileWriter("finansije_export.txt");
 
@@ -163,7 +162,6 @@ public class FinanceTrackerForm {
     }
 
     private void loadDataIntoTable() {
-
         ArrayList<Transaction> list = manager.getAllTransactions();
 
         DefaultTableModel model = new DefaultTableModel();

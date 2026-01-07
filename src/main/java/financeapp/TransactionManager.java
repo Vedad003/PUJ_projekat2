@@ -14,8 +14,10 @@ import static com.mongodb.client.model.Filters.eq;
 public class TransactionManager {
 
     private final MongoCollection<Document> collection;
+    private final String username; // dodano
 
-    public TransactionManager() {
+    public TransactionManager(String username) {
+        this.username = username;
         MongoDatabase db = MongoDBConnection.getDatabase();
         collection = db.getCollection("transactions");
     }
@@ -35,7 +37,7 @@ public class TransactionManager {
     public ArrayList<Transaction> getAllTransactions() {
         ArrayList<Transaction> list = new ArrayList<>();
 
-        MongoCursor<Document> cursor = collection.find().iterator();
+        MongoCursor<Document> cursor = collection.find(eq("username", username)).iterator();
         while (cursor.hasNext()) {
 
             Document d = cursor.next();
@@ -53,7 +55,7 @@ public class TransactionManager {
             String desc = d.getString("description") != null ? d.getString("description") : "";
             String category = d.getString("category") != null ? d.getString("category") : "ostalo";
 
-            list.add(new Transaction(id, type, amount, desc, category));
+            list.add(new Transaction(id, username, type, amount, desc, category));
         }
 
         return list;

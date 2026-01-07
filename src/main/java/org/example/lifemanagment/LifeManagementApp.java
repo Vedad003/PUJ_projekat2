@@ -10,10 +10,12 @@ import java.io.IOException;
 public class LifeManagementApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LifeManagementApp.class.getResource("MainMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/org/example/lifemanagment/Login.fxml")
+        );
+        stage.setScene(new Scene(loader.load(), 400, 300));
         stage.setTitle("Life Management System");
-        stage.setScene(scene);
         stage.show();
     }
+
 }
