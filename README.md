@@ -17,6 +17,11 @@ da li već imamo account ili nemamo) te nakon toga idemo na main menu gdje imamo
 Study Planner i Mood Tracker.Aplikacija funkcioniše tako da kada unesemo svoju
 aktivnost i kliknemo dugme "Save" podaci se spremaju u bazu podataka te klikom
 na dugme "Show stats" prikazuju nam se statistički podaci tipa average sleep.
+Vezano za prvi dio (Finance Tracker), on funkcioniše tako što kada kliknemo na 
+dugme Finance App otvara nam se prozor te nam je omogućeno da biramo vrstu  
+transakcije (prihod/rashod),da biramo kategoriju transakcije,da dodajemo 
+nove transakcije,da ažuriramo postojeće,da brišemo transakcije te da exportujemo
+transakcije u tekstualni fajl.
 
 Tehnologije
 
