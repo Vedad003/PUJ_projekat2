@@ -13,7 +13,7 @@
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <!-- Forma: labele lijevo -->
+
     <VBox spacing="6" alignment="TOP_LEFT">
         <Label text="Username:" />
         <TextField fx:id="usernameField" promptText="Enter username"/>
@@ -22,7 +22,7 @@
         <PasswordField fx:id="passwordField" promptText="Enter password"/>
     </VBox>
 
-    <!-- Dugmad: centrirana -->
+
     <VBox spacing="8" alignment="CENTER">
         <Button text="Login" onAction="#handleLogin"/>
         <Button text="Register" onAction="#goToRegister"/>

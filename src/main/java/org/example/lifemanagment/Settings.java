@@ -2,7 +2,6 @@ package org.example.lifemanagment;
 
 public class Settings {
 
-    // Uklonjena tema i badges
     private static boolean notificationsEnabled = true;
 
     public static boolean isNotificationsEnabled() { return notificationsEnabled; }

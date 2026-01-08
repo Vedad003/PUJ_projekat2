@@ -14,7 +14,7 @@ import static com.mongodb.client.model.Filters.eq;
 public class TransactionManager {
 
     private final MongoCollection<Document> collection;
-    private final String username; // dodano
+    private final String username;
 
     public TransactionManager(String username) {
         this.username = username;
